@@ -1,0 +1,9 @@
+requests==2.13.0
+google-api-python-client
+gtts
+pip
+fb
+pygame
+playsound
+speechrecognition
+
