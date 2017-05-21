@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://D:/Learning/PYTHON/Tyara/.idea/Tyara.iml" filepath="D:/Learning/PYTHON/Tyara/.idea/Tyara.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Tyara.iml" filepath="$PROJECT_DIR$/.idea/Tyara.iml" />
     </modules>
   </component>
 </project>

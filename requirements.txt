@@ -1,4 +1,4 @@
-requests==2.13.0
+requests==2.14.2
 google-api-python-client
 gtts
 pip
@@ -6,4 +6,11 @@ fb
 pygame
 playsound
 speechrecognition
-
+tflearn
+pyttsx
+PyAudio
+sphinx
+pat
+sounddevice
+setuptools
+soundfile
