@@ -14,15 +14,15 @@ from gtts import gTTS
 
 def makemp3(words, mp3name, language='hi'):
     tts = gTTS(text=words, lang=language)
-    tts.save("%s.mp3" % mp3name)
-    print("File %s.mp3 Successfully Saved" % mp3name)
+    tts.save("%s.flac" % mp3name)
+    print("File %s.flac Successfully Saved" % mp3name)
     return mp3name
 
 
 def play(wavname):
     pg.mixer.init(frequency=21050, size=-16, channels=2, buffer=4096)
     clock = pg.time.Clock()
-    pg.mixer.music.load('D:\Learning\PYTHON\Tyara\src\WavRes\%s.mp3'%wavname)
+    pg.mixer.music.load('D:\Learning\PYTHON\Tyara\src\WavRes\%s.flac'%wavname)
     pg.mixer.music.play()
     while pg.mixer.music.get_busy():
         # check if playback has finished
