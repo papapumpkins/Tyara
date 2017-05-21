@@ -14,7 +14,7 @@ def speak(audioString):
 
 
 def recordAudio():
-    # Record Audio
+    # RecordSound Audio
     r = sr.Recognizer()
     with sr.Microphone() as source:
         print("Say something!")

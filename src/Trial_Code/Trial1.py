@@ -59,7 +59,7 @@ def add_silence(snd_data, seconds):
 
 def record():
     """
-    Record a word or words from the microphone and
+    RecordSound a word or words from the microphone and
     return the data as an array of signed shorts.
 
     Normalizes the audio, trims silence from the
