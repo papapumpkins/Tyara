@@ -15,4 +15,3 @@ sounddevice
 setuptools
 soundfile
 gcloud
-google-api-python-client

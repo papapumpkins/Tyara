@@ -15,12 +15,14 @@ def transcribe_file(speech_file):
         audio_sample = speech_client.sample(
             content=content,
             source_uri=None,
-            encoding='LINEAR16',
-            sample_rate=16000)
+            encoding=speech.Encoding.LINEAR16,
+            sample_rate_hertz=16000)
 
-    alternatives = audio_sample.sync_recognize('en-US')
+    alternatives = audio_sample.recognize('en-US')
     for alternative in alternatives:
-        print('Transcript: {}'.format(alternative.transcript))
+        Transc = format(alternative.transcript)
+        print(Transc)
+        #print('Transcript: {}'.format(alternative.transcript))
 
 
 def transcribe_gcs(gcs_uri):
@@ -32,11 +34,13 @@ def transcribe_gcs(gcs_uri):
         content=None,
         source_uri=gcs_uri,
         encoding='FLAC',
-        sample_rate=16000)
+        sample_rate_hertz=16000)
 
-    alternatives = audio_sample.sync_recognize('en-US')
+    alternatives = audio_sample.recognize('en-US')
     for alternative in alternatives:
-        print('Transcript: {}'.format(alternative.transcript))
+        Transcript = format(alternative.transcript)
+        print(Transcript)
+        #print('Transcript: {}'.format(alternative.transcript))
 
 
 if __name__ == '__main__':

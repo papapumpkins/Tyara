@@ -6,6 +6,7 @@ from resources import *
 from Academics import *
 
 
+
 #Creating Objects for these classes :
 G=quickstart
 W=Accuweather
@@ -41,13 +42,15 @@ gmail_unreads=G.doit()  #Integer Value of number of Unread Messages
 #Now, send the data for String formation:
 speechtext=P.makewords(str(int(current_temp)),str(weather_condition),str(int(max_temp)),str(int(min_temp)),headline,str(gmail_unreads)
                    ,d3,d1,d2,t1,t2)
-speechtext = "Hello"
+#speechtext = "Hello"
 
 #Create mp3 of the speech
 wavname=P.makemp3(speechtext,"report")
 
+
 #play the file
 P.play(wavname)
+
 
 
 
