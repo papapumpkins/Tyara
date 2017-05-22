@@ -31,6 +31,7 @@ def return_current_weather():
     weather_array = extractValues()
     current_temp = weather_array[1]
     current_condition = weather_array[0]
+    #print(" The temperature outside is "+str(current_temp) +", and the weather is "+current_condition)
     return " The temperature outside is "+str(current_temp) +", and the weather is "+current_condition
 
 
@@ -40,4 +41,5 @@ def return_forecast():
     weather_dialog = weather_dialog + WA[2] + " to "+ WA[3]+". You can expect "+WA[4]+". That's all I have for now."
     return weather_dialog
 
+return_current_weather()
 

@@ -1,8 +1,25 @@
 import pygame as pg
 from gtts import gTTS
 
+def tyaraSpeaks(str, filename="speaker.mp3",language = 'en'):
+    tts = gTTS(text=str, lang=language)
+    tts.save("%s.mp3" % filename)
+    print("File %s.mp3 Successfully Saved" % filename)
+    pg.mixer.init(frequency=27050, size=-16, channels=1, buffer=4096)
+    clock = pg.time.Clock()
+    pg.mixer.music.load('D:\Learning\PYTHON\Tyara\src\%s.mp3' % filename)
+    pg.mixer.music.play()
+    while pg.mixer.music.get_busy():
+        # check if playback has finished
+        clock.tick(30)
 
-# w1=Current Temperature
+
+
+
+
+
+
+    # w1=Current Temperature
 # w2=Current Weather Conditions
 # w3=MAx Temperature of Today
 # w4=Min Temperature of Today
@@ -10,6 +27,7 @@ from gtts import gTTS
 # g1=Current Unread Messages
 # g2=Total Unread Messages
 #
+'''
 spfs="."
 sp01 = "Hello There!"
 sp02 = "Welcome!"
@@ -57,5 +75,5 @@ def play(wavname):
     pg.mixer.music.play()
     while pg.mixer.music.get_busy():
         # check if playback has finished
-        clock.tick(30)
+        clock.tick(30) '''
 

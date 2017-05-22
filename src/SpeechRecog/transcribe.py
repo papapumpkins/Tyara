@@ -20,8 +20,7 @@ def transcribe_file(speech_file):
     for alternative in alternatives:
         Transc = format(alternative.transcript)
         print(Transc)
-        command_Code = Interpret_Text(Transc)
-        print(command_Code)
+        return(Transc)
 
 
 # ///////////////////////////////////////////////////////////////////////////

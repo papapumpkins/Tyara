@@ -62,13 +62,14 @@ def doit():
 
     results = service.users().labels().list(userId='me').execute()
     label1 = service.users().labels().get(userId='me', id='INBOX').execute();
-    unreads = (label1["messagesUnread"] - 2700)
+    unreads = (label1["messagesUnread"]-3900)
 
     return unreads
 
 
-def return_string_unreads(unreads):
-    return "You have " + str(unreads) + " messages in yout GMail inbox."
+def return_string_unread():
+    unreads = doit()
+    return "You're having " + str(unreads) + " messages in your GMail inbox."
 
 
 if __name__ == '__main__':
