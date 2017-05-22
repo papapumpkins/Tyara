@@ -1,4 +1,3 @@
-
 from __future__ import print_function
 import httplib2
 import os
@@ -10,6 +9,7 @@ from oauth2client.file import Storage
 
 try:
     import argparse
+
     flags = argparse.ArgumentParser(parents=[tools.argparser]).parse_args()
 except ImportError:
     flags = None
@@ -44,10 +44,11 @@ def get_credentials():
         flow.user_agent = APPLICATION_NAME
         if flags:
             credentials = tools.run_flow(flow, store, flags)
-        else: # Needed only for compatibility with Python 2.6
+        else:  # Needed only for compatibility with Python 2.6
             credentials = tools.run(flow, store)
         print('Storing credentials to ' + credential_path)
     return credentials
+
 
 def doit():
     """Shows basic usage of the Gmail API.
@@ -64,6 +65,10 @@ def doit():
     unreads = (label1["messagesUnread"] - 2700)
 
     return unreads
+
+
+def return_string_unreads(unreads):
+    return "You have " + str(unreads) + " messages in yout GMail inbox."
 
 
 if __name__ == '__main__':
