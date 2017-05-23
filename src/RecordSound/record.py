@@ -1,5 +1,6 @@
 import pyaudio
 import wave
+import winsound
 
 def record_from_mic(seconds):
     CHUNK = 1024
@@ -9,6 +10,9 @@ def record_from_mic(seconds):
     RECORD_SECONDS = seconds
     WAVE_OUTPUT_FILENAME = "output.flac"
 
+    FREQ = 2500
+    DUR = 500
+
     p = pyaudio.PyAudio()
 
     stream = p.open(format=FORMAT,
@@ -17,6 +21,7 @@ def record_from_mic(seconds):
                     input=True,
                     frames_per_buffer=CHUNK)  # buffer
 
+    winsound.Beep(FREQ,DUR)
     print("* recording")
 
     frames = []
@@ -26,6 +31,7 @@ def record_from_mic(seconds):
         frames.append(data)  # 2 bytes(16 bits) per channel
 
     print("* done recording")
+    winsound.Beep(FREQ,DUR)
 
     stream.stop_stream()
     stream.close()

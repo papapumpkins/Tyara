@@ -1,17 +1,17 @@
 import time
 
-from SpeechRecog import transcribe, SpeechLock
-from RecordSound import record
-from Speech_Interpreter import Text_Interpreter
-from GMailAuth import gmailpick
-from AlarmsAndReminders import Alarms
+from src.SpeechRecog import transcribe, SpeechLock
+from src.RecordSound import record
+from src.Speech_Interpreter import Text_Interpreter
+from src.GMailAuth import gmailpick
 
 
-from WeatherApps import Accuweather
-from TTS import PlaySounds,speech_rec
-from DateTime import Present
-from resources import *
-from Academics import class_data
+
+from src.WeatherApps import Accuweather
+from src.TTS import PlaySounds,speech_rec
+from src.DateTime import Present
+from src.resources import *
+from src.Academics import class_data
 
 lock_status = 0
 first_command =1
