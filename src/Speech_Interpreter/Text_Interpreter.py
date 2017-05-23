@@ -26,11 +26,11 @@ def Interpret_Text(command):
     if (command.find("weather")!=-1):
         if ((command.find("now") != -1) | (command.find("outside")) != -1):
             code = 2
-        if ((command.find("report")) != -1 | (command.find("forecast")) != -1):
+        elif ((command.find("report")) != -1 | (command.find("forecast")) != -1):
             code = 3
-        else: code=3
+        else: code=0
     if (command.find("taxi") != -1) | (command.find("cab")) != -1 | (command.find("ride")) != -1:
-        if (command.find("home to work")):
+        if (command.find("home to work")!=-1):
             code = 4
         elif (command.find("work to home") != -1):
             code = 5

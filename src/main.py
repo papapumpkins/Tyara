@@ -36,6 +36,7 @@ def perform_action_with_code(sin_code,sin_dialog):
         weather_current_dialog = WD.return_cuurent_weather()
         return weather_current_dialog
 
+
     if (sin_code == 3):
         WD = Accuweather
         weather_forecast_dialog =WD.return_forecast()
@@ -43,11 +44,11 @@ def perform_action_with_code(sin_code,sin_dialog):
 
 
     if (sin_code == 4):
-        return "Feature Coming Soon."
+        return ("Feature Coming Soon.")
 
 
     if (sin_code == 5):
-        return "Feature Coming Soon."
+        return ("Feature Coming Soon.")
 
     if (sin_code == 6):
         AL = Alarms
@@ -55,6 +56,7 @@ def perform_action_with_code(sin_code,sin_dialog):
 
     if (sin_code == 7):
         CL = class_data
+        return ("You have no classes.")
 
     if (sin_code == 8):
         DT = Present
@@ -73,21 +75,14 @@ def perform_action_with_code(sin_code,sin_dialog):
         lock_status=1
         return("Speech Recognition has been Locked.")
 
-
-
     if (sin_code == 11):
         #Authenticate & unlock Device
         return("Speech Recognition has been unlocked. Welcome! ")
 
     if (sin_code==-1):
-        listen_now()
         return "Oops! I didn't get that. Please try speaking clearer & louder."
 
 
-        '''
-    if (sin_code == 12): 
-    #For Emergency
-'''
 
 def listen_now():
     TSpeak = PlaySounds
@@ -115,9 +110,6 @@ def listen_now():
         sin_dialog = Transcripted_Text
         speech_string = perform_action_with_code(sin_code, sin_dialog)
         TSpeak.tyaraSpeaks(speech_string)
-
-    listen_now()
-
 
 
 listen_now()

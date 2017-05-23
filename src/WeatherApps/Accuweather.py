@@ -38,7 +38,7 @@ def return_current_weather():
 def return_forecast():
     WA = extractValues()
     weather_dialog = "The current temperature outside is "+ str(WA[1])+"and the weather is "+WA[0]+". The temperature will range from "
-    weather_dialog = weather_dialog + WA[2] + " to "+ WA[3]+". You can expect "+WA[4]+". That's all I have for now."
+    weather_dialog = weather_dialog + str(WA[2]) + " to "+ str(WA[3])+". You can expect "+str(WA[4])+". That's all I have for now."
     return weather_dialog
 
 return_current_weather()
