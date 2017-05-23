@@ -52,8 +52,7 @@ response = client.get_price_estimates(
 )
 
 
-print(products)
-print(response)
+
 
 
 

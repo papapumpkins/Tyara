@@ -1,7 +1,7 @@
 import pygame as pg
 from gtts import gTTS
 
-def tyaraSpeaks(str, filename="speaker.mp3",language = 'en'):
+def tyaraSpeaks(str, filename="speaker",language = 'en'):
     tts = gTTS(text=str, lang=language)
     tts.save("%s.mp3" % filename)
     print("File %s.mp3 Successfully Saved" % filename)
