@@ -29,13 +29,14 @@ def Interpret_Text(command):
         elif ((command.find("report")) != -1 | (command.find("forecast")) != -1):
             code = 3
         else: code=3
-    if (command.find("taxi") != -1) | (command.find("cab")) != -1 | (command.find("ride")) != -1:
-        if (command.find("home to work")!=-1):
+    if (command.find("taxi") != -1) | (command.find("uber")) != -1 | (command.find("ride")) != -1:
+        code = 4
+        '''if (command.find("home")!=-1&command.find("work")!=-1):
             code = 4
         elif (command.find("work to home") != -1):
             code = 5
         else:
-            code = 0
+            code = 0'''
     if (command.find("alarm") != -1):
         code = 6
     if (command.find("class") != -1 & command.find("today") != -1):
@@ -44,8 +45,6 @@ def Interpret_Text(command):
         code = 8
     if (command.find("time") != -1):
         code = 9
-    if (command.find("lock") != -1 & (command.find("speech") != -1|command.find("recognition")!=-1)):
-        code = 10
     if (command.find("unlock") != -1 & command.find("speech") != -1):
         code = 11
     if(command.find("nothing")!=-1|command.find("bye")!=-1|command.find("close")):

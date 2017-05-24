@@ -50,7 +50,8 @@ def perform_action_with_code(sin_code,sin_dialog):
 
 
     if (sin_code == 5):
-        return ("Feature Coming Soon.")
+        UB = src.UberBook
+        return UB.book_ride(1)
 
     if (sin_code == 6):
         AL = calendar_data
@@ -70,13 +71,14 @@ def perform_action_with_code(sin_code,sin_dialog):
         time_now_dialog = DT.returnCurrentTime()
         return time_now_dialog
 
-    if (sin_code == 10):
+    '''if (sin_code == 10):
         #initiate SR lock
         #If command says " Lock Speech", then lock the function unless an unlock isn't initiated
         SL = SpeechLock
         lock_status=1
         return("Speech Recognition has been Locked.")
-        #This will be used only for streaming speech.
+        exit(0)
+        #This will be used only for streaming speech.'''
 
     if (sin_code == 11):
         #Authenticate & unlock Device
