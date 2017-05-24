@@ -1,9 +1,12 @@
 import time
+import os
 
 from src.SpeechRecog import transcribe, SpeechLock
 from src.RecordSound import record
 from src.Speech_Interpreter import Text_Interpreter
 from src.GMailAuth import gmailpick
+from src.Calendars import calendar_data
+import src.UberBook
 
 
 
@@ -14,9 +17,7 @@ from src.resources import *
 from src.Academics import class_data
 
 lock_status = 0
-first_command =1
-
-
+audio_count = 0
 
 
 def perform_action_with_code(sin_code,sin_dialog):
@@ -33,7 +34,7 @@ def perform_action_with_code(sin_code,sin_dialog):
 
     if (sin_code == 2): #Weather Current
         WD  = Accuweather
-        weather_current_dialog = WD.return_cuurent_weather()
+        weather_current_dialog = WD.return_current_weather()
         return weather_current_dialog
 
 
@@ -44,19 +45,20 @@ def perform_action_with_code(sin_code,sin_dialog):
 
 
     if (sin_code == 4):
-        return ("Feature Coming Soon.")
+        UB = src.UberBook
+        return UB.book_ride(1)
 
 
     if (sin_code == 5):
         return ("Feature Coming Soon.")
 
     if (sin_code == 6):
-        AL = Alarms
+        AL = calendar_data
         return AL.setAlarm(sin_dialog)
 
     if (sin_code == 7):
         CL = class_data
-        return ("You have no classes.")
+        return (sin_dialog)
 
     if (sin_code == 8):
         DT = Present
@@ -74,42 +76,62 @@ def perform_action_with_code(sin_code,sin_dialog):
         SL = SpeechLock
         lock_status=1
         return("Speech Recognition has been Locked.")
+        #This will be used only for streaming speech.
 
     if (sin_code == 11):
         #Authenticate & unlock Device
         return("Speech Recognition has been unlocked. Welcome! ")
+        #This will be used only for streaming speech.
+
+    if (sin_code==12):
+        return "exit"
 
     if (sin_code==-1):
         return "Oops! I didn't get that. Please try speaking clearer & louder."
 
+Rec = record
+TR = transcribe
+SIN = Text_Interpreter
 
 
 def listen_now():
     TSpeak = PlaySounds
-    if(first_command==1):
-        TSpeak.tyaraSpeaks("Hi Neel! What can I do for You?", "hello")
+    global audio_count
+    prev_audio_filename = "speaker" + str(audio_count)+".mp3"
 
-    else:
+    if(audio_count==0):
+        TSpeak.tyaraSpeaks("Hi ! What can I do for You?", "hello")
+        audio_count = audio_count+1
+
+    elif(audio_count>0):
         TSpeak.tyaraSpeaks("Can I do anything else for you ? ")
+        audio_count = audio_count + 1
+        os.remove(prev_audio_filename)
+    else:
+        TSpeak.tyaraSpeaks("Uff! I feel Sick. Bye. ")
+        os.remove(prev_audio_filename)
+        exit(0)
 
-    Rec = record
+
     Rec.record_from_mic(5)
     #time.sleep(5.5)
 
-    TR = transcribe
     Transcripted_Text = TR.transcribe_file("output.flac")
 
-    SIN = Text_Interpreter
     sin_code = SIN.Interpret_Text(Transcripted_Text)
 
-    if(sin_code==0):
+    if(sin_code==0|sin_code==-1):
         TSpeak.tyaraSpeaks("Goodbye!","bye")
         exit()
 
     else:
         sin_dialog = Transcripted_Text
         speech_string = perform_action_with_code(sin_code, sin_dialog)
-        TSpeak.tyaraSpeaks(speech_string)
+        audio_filename = "speaker"+str(audio_count)
+        TSpeak.tyaraSpeaks(speech_string,audio_filename)
+
+
+    listen_now()
 
 
 listen_now()

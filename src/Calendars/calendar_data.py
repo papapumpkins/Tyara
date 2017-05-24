@@ -61,11 +61,65 @@ def main():
     """
     credentials = get_credentials()
     http = credentials.authorize(httplib2.Http())
-    service = discovery.build('calendar', 'v3', http=http)
 
-    now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
-    #Calendar API didn't Work :(
+
+def CreateAlarm(Summary,Title,StartTime,RepeatOrNot):
+    #Authentication Check!
+    main()
+
+    '''Collect Reminder information. 
+    1. Start Time (no End time implemented for now. Event will end at 0 mins by default
+    2. Title  = Reminder title collected from sin_dialog
+    3. Attendees = None
+    4. RepeatOrNot = Boolean
+    '''
+    service = discovery.build('calendar', 'v3')
+
+    now = datetime.datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
+    event = {
+        'summary': 'Tyara Alarm',
+        'location': 'Home',
+        'description': 'Morning Alarm.',
+        'start': {
+            'dateTime': '2015-05-25T07:00:00-07:00',
+            'timeZone': 'India/Kolkata',
+        },
+        'end': {
+            'dateTime': '2017-05-25T07:00:00-07:00',
+            'timeZone': 'India/Kolkata',
+        },
+        'recurrence': [
+            'RRULE:FREQ=DAILY;COUNT=1'
+        ],
+        'attendees': [
+            {'email': 'res.neelotpalnag@gmail.com'},
+        ],
+        'reminders': {
+            'useDefault': False,
+        },
+    }
+
+    event[0] = Summary
+    event[2]= Title
+    event[3][1] = StartTime.isoformat()
+    event[4][1] = StartTime.isoformat()
+
+    if(RepeatOrNot==1):
+        event[6] = ['RRULE:FREQ=DAILY;COUNT=1']
+    else: event[6] = ['RRULE:FREQ=ONCE;COUNT=1']
+
+    # now publish the event !
+    event = service.events().insert(calendarId='primary', body=event).execute()
+    print('Event created: %s' % (event.get('htmlLink')))
+
+def setAlarm(sin_dialog):
+    Summary = "Tyara Alarm"
+    Title = "Wake Up"
+    StartTime = '2017-05-25T17:00:00-07:30'
+    RepeatOrNot = 0
 
 
 if __name__ == '__main__':
     main()
+
+setAlarm("YooHoo")

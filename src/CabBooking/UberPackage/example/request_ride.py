@@ -1,37 +1,3 @@
-# Copyright (c) 2016 Uber Technologies, Inc.
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-# THE SOFTWARE.
-
-"""Use an UberRidesClient to request and complete a ride.
-
-This example demonstrates how to use an UberRidesClient to request a ride
-under surge. After successfully requesting a ride, it updates the
-ride status to 'completed' and deactivates surge.
-
-To run this example:
-
-    (1) Run `python authorize_user.py` to get OAuth 2.0 Credentials
-    (2) Run `python request_ride.py`
-    (3) The UberRidesClient will make API calls and print the
-        results to your terminal.
-"""
-
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -86,7 +52,7 @@ def estimate_ride(api_client):
             start_longitude=START_LNG,
             end_latitude=END_LAT,
             end_longitude=END_LNG,
-            seat_count=2
+            seat_count=1
         )
 
     except (ClientError, ServerError) as error:
