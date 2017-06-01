@@ -2,7 +2,7 @@
 import bluetooth
 import socket
 
-target_name = "Neel's Galaxy J7"
+target_name = "Neel's IPad"
 target_address = None
 
 nearby_devices = bluetooth.discover_devices()
