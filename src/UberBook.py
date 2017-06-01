@@ -37,6 +37,9 @@ def book_ride(request_type=1):
         end_longitude=Home_Long,
         seat_count=1)
 
+
+
+
     #print(response.json)
     RJ = response.json
     distance = str(RJ['prices'][0]['distance'])

@@ -1,6 +1,5 @@
 import pyaudio
 import wave
-import winsound
 
 def record_from_mic(seconds):
     CHUNK = 1024
@@ -21,7 +20,7 @@ def record_from_mic(seconds):
                     input=True,
                     frames_per_buffer=CHUNK)  # buffer
 
-    winsound.Beep(FREQ,DUR)
+    #winsound.Beep(FREQ,DUR)
     print("* recording")
 
     frames = []
